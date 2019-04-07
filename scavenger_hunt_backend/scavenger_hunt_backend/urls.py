@@ -1,7 +1,8 @@
 from django.contrib import admin
-from django.urls import path, include
+from django.conf.urls import url
+from django.conf.urls import include
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('accounts/', include('django.contrib.auth.urls')), # new
+    url('admin/', admin.site.urls),
+    url('api/', include('hunt_app.urls'))
 ]

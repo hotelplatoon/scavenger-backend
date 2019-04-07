@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
-    'hunt_app'
+    'rest_framework',
+    'rest_framework.authtoken',
+    'hunt_app',
 ]
 
 MIDDLEWARE = [
