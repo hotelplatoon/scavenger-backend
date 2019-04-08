@@ -1,5 +1,4 @@
-#!/Users/joshuab90/group_project/scavenger-backend/venv/bin/python
-
+#!/Users/CarolineCessaro/Desktop/CP/Scavenger_Hunt/scavenger-backend/scavenger_hunt_backend/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
