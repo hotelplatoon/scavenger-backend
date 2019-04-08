@@ -1,0 +1,1 @@
+web: gunicorn scavenger_hunt_backend.wsgi
