@@ -1,3 +1,4 @@
+import django_heroku
 """
 Django settings for scavenger_hunt_backend project.
 
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'rest_framework',
     'rest_framework.authtoken',
+    'corsheaders',
     'hunt_app',
 ]
 
@@ -51,7 +53,18 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_WHITELIST = (
+    'localhost:8500',
+)
+CORS_ORIGIN_REGEX_WHITELIST = (
+    'localhost:8500',
+)
 
 ROOT_URLCONF = 'scavenger_hunt_backend.urls'
 
@@ -124,3 +137,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = 'hunt_app.UserProfile'
+django_heroku.settings(locals())
