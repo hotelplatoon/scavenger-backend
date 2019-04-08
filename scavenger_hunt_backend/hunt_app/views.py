@@ -5,8 +5,10 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.authentication import TokenAuthentication
 from rest_framework import filters
+from rest_framework.authtoken.serializers import AuthTokenSerializer
+from rest_framework.authtoken.views import ObtainAuthToken
+
 from . import serializers
-from django.http import HttpResponse
 from . import models
 from . import permissions
 
@@ -81,3 +83,10 @@ class UserProfileViewSet(viewsets.ModelViewSet):   # handles creating, reading, 
     permission_classes = (permissions.UpdateOwnProfile,)
     filter_backends = (filters.SearchFilter,)
     search_fields = ('name', 'email',)
+
+class LoginViewSet(viewsets.ViewSet): #  checks email and password and returns an auth token
+
+    serializer_class = AuthTokenSerializer
+
+    def create(self, request):  # use the obtain auth token api view to validate and create a token
+        return ObtainAuthToken().post(request)
