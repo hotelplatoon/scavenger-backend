@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from . import serializers
 from django.http import HttpResponse
+from . import models
 
 class HelloApiView(APIView):
     'Test API view'
@@ -67,3 +68,7 @@ class HelloViewSet(viewsets.ViewSet):  # test API Viewset
 
     def destroy(self, request, pk=None):
         return Response({'http_method':'DELETE'})
+
+class UserProfileViewSet(viewsets.ModelViewSet):   # handles creating, reading, updating profiles
+    serializer_class = serializers.UserProfileSerializer
+    queryset = models.UserProfile.objects.all()
