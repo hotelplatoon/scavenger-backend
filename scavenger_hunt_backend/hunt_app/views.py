@@ -8,7 +8,7 @@ from django.http import HttpResponse
 from . import models
 
 class HelloApiView(APIView):
-    'Test API view'
+
     serializer_class = serializers.HelloSerializer
     def get(self, request, format=None): #  returns list of APIList features
       an_apiview = [
@@ -39,6 +39,7 @@ class HelloApiView(APIView):
         return Response({'method':'delete'})
 
 class HelloViewSet(viewsets.ViewSet):  # test API Viewset 
+    
     serializer_class = serializers.HelloSerializer 
     def list(self, request):
         a_viewset = [
@@ -70,5 +71,6 @@ class HelloViewSet(viewsets.ViewSet):  # test API Viewset
         return Response({'http_method':'DELETE'})
 
 class UserProfileViewSet(viewsets.ModelViewSet):   # handles creating, reading, updating profiles
+    
     serializer_class = serializers.UserProfileSerializer
     queryset = models.UserProfile.objects.all()
