@@ -21,7 +21,7 @@ class UserProfileViewSet(viewsets.ModelViewSet):   # handles creating, reading, 
     filter_backends = (filters.SearchFilter,)
     search_fields = ('name', 'email',)
 
-class LoginViewSet(viewsets.ModelViewSet): #  checks email and password and returns an auth token
+class LoginViewSet(viewsets.ViewSet): #  checks email and password and returns an auth token
 
     serializer_class = AuthTokenSerializer
 
