@@ -27,3 +27,15 @@ class LoginViewSet(viewsets.ViewSet): #  checks email and password and returns a
 
     def create(self, request):  # use the obtain auth token api view to validate and create a token
         return ObtainAuthToken().post(request)
+        
+class HuntViewSet(viewsets.ModelViewSet):
+  queryset = models.Hunt.objects.all()
+  serializer_class = serializers.HuntSerializer
+
+class CheckpointViewSet(viewsets.ModelViewSet):
+  queryset = models.Checkpoint.objects.all()
+  serializer_class = serializers.CheckpointSerializer
+
+class UserHuntViewSet(viewsets.ModelViewSet):
+  queryset = models.UserHunt.objects.all()
+  serializer_class = serializers.UserHuntSerializer

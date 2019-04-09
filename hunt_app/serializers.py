@@ -17,3 +17,17 @@ class UserProfileSerializer(serializers.ModelSerializer): # serializer for user 
         user.save()
         return user
 
+class CheckpointSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = models.Checkpoint
+    fields = ['hunt_id','clue','description','image_url','pk']
+
+class HuntSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = models.Hunt
+    fields = ['category','city', 'checkpoint_amount','pk']
+
+class UserHuntSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = models.UserHunt
+    fields = ['user_id','hunt_id','created_at','finished_at','pk']
