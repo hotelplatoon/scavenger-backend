@@ -9,7 +9,7 @@ router.register('login', views.LoginViewSet, basename='login')
 
 router.register('checkpoint', views.CheckpointViewSet, basename='checkpoint')
 router.register('hunt', views.HuntViewSet, basename='hunt')
-router.register('userhunt', views.UserhuntViewSet, basename='userhunt')
+router.register('userhunt', views.UserHuntViewSet, basename='userhunt')
 urlpatterns = [
     url('', include(router.urls)),
 ]

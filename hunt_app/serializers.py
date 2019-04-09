@@ -20,7 +20,7 @@ class UserProfileSerializer(serializers.ModelSerializer): # serializer for user 
 class CheckpointSerializer(serializers.ModelSerializer):
   class Meta:
     model = models.Checkpoint
-    fields = ['hunt_id','name','clue','description','image_url','pk']
+    fields = ['hunt_id','clue','description','image_url','pk']
 
 class HuntSerializer(serializers.ModelSerializer):
   class Meta:
@@ -29,5 +29,5 @@ class HuntSerializer(serializers.ModelSerializer):
 
 class UserHuntSerializer(serializers.ModelSerializer):
   class Meta:
-    model = models.User_Hunt
+    model = models.UserHunt
     fields = ['user_id','hunt_id','created_at','finished_at','pk']

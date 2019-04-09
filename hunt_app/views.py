@@ -21,25 +21,21 @@ class UserProfileViewSet(viewsets.ModelViewSet):   # handles creating, reading, 
     filter_backends = (filters.SearchFilter,)
     search_fields = ('name', 'email',)
 
-class LoginViewSet(viewsets.ViewSet): #  checks email and password and returns an auth token
+class LoginViewSet(viewsets.ModelViewSet): #  checks email and password and returns an auth token
 
     serializer_class = AuthTokenSerializer
 
     def create(self, request):  # use the obtain auth token api view to validate and create a token
         return ObtainAuthToken().post(request)
+        
+class HuntViewSet(viewsets.ModelViewSet):
+  queryset = models.Hunt.objects.all()
+  serializer_class = serializers.HuntSerializer
 
-class CheckpointViewSet(viewsets.ViewSet):
-  queryset = User.objects.all()
-  serializer_class = CheckpointSerializer
+class CheckpointViewSet(viewsets.ModelViewSet):
+  queryset = models.Checkpoint.objects.all()
+  serializer_class = serializers.CheckpointSerializer
 
-class HuntViewSet(viewsets.ViewSet):
-  queryset = User.objects.all()
-  serializer_class = HuntSerializer
-
-class UserhuntViewSet(viewsets.ViewSet):
-  queryset = User.objects.all()
-  serializer_class = UserhuntSerializer
-
-class UserViewSet(viewsets.ViewSet):
-  queryset = User.objects.all()
-  serializer_class = UserSerializer
+class UserHuntViewSet(viewsets.ModelViewSet):
+  queryset = models.UserHunt.objects.all()
+  serializer_class = serializers.UserHuntSerializer
