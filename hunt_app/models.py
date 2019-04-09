@@ -24,7 +24,6 @@ class UserProfileManager(BaseUserManager): # helps django work with our custom u
         return user
         
 class UserProfile(AbstractBaseUser, PermissionsMixin):  # represents a user profile in system
-    #pk 
     email = models.EmailField(max_length=255, unique=True)
     name = models.CharField(max_length=255)
     is_active = models.BooleanField(default=True)
@@ -45,7 +44,7 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):  # represents a user prof
 class Hunt(models.Model):
     category = models.CharField(max_length=255)
     city = models.CharField(max_length=255)
-    checkpoint_amount = models.IntegerField(max_length=1, serialize=True)
+    checkpoint_amount = models.IntegerField(serialize=True)
     
     def __str__(self):
         return self.category
@@ -56,9 +55,8 @@ class UserHunt(models.Model):
     created_at = models.DateTimeField(default=timezone.now, null=True)
     finished_at = models.DateTimeField(default=timezone.now, null=True)
     # successful_checkpoints = models.
-    
-    def __str__(self):
-        return self.user_id
+    # def __str__(self):
+    #     return self.''
         
 class Checkpoint(models.Model):
     hunt_id = models.ForeignKey(Hunt, on_delete=models.CASCADE, related_name='checkpoints')
@@ -67,4 +65,4 @@ class Checkpoint(models.Model):
     image_url = models.TextField(blank=True, null=True)
     
     def __str__(self):
-        return self.name
+        return self.clue
