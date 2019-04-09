@@ -38,3 +38,31 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):  # represents a user prof
 
     def __str__(self):
         return self.email
+
+class User_Hunt(models.Model):
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name='users')
+    hunt_id = models.ForeignKey(Hunt, on_delete=models.CASCADE, related_name='hunts')
+    created_at = models.DateTimeField(default=timezone.now, null=True)
+    finished_at = models.DateTimeField(default=timezone.now, null=True)
+    # successful_checkpoints = models.
+
+	def __str__(self):
+		return self.user_id
+
+class Hunt(models.Model):
+    category = models.CharField(max_length=255)
+	city = models.CharField(max_length=255)
+    checkpoint_amount = models.IntegerField(max_length=1, serialize=True)
+
+	def __str__(self):
+		return self.category
+
+class Checkpoint(models.Model):
+    hunt_id = models.ForeignKey(Hunt, on_delete=models.CASCADE, related_name='checkpoints')
+	name = models.CharField(max_length=255)
+    clue = models.CharField(max_length=255)
+    description = models.TextField(blank=True, null=True)
+    image_url = models.TextField(blank=True, null=True)
+
+	def __str__(self):
+		return self.name
