@@ -29,13 +29,17 @@ class LoginViewSet(viewsets.ViewSet): #  checks email and password and returns a
         return ObtainAuthToken().post(request)
         
 class HuntViewSet(viewsets.ModelViewSet):
-  queryset = models.Hunt.objects.all()
-  serializer_class = serializers.HuntSerializer
+    queryset = models.Hunt.objects.all()
+    serializer_class = serializers.HuntSerializer
 
 class CheckpointViewSet(viewsets.ModelViewSet):
-  queryset = models.Checkpoint.objects.all()
-  serializer_class = serializers.CheckpointSerializer
+    queryset = models.Checkpoint.objects.all()
+    serializer_class = serializers.CheckpointSerializer
 
 class UserHuntViewSet(viewsets.ModelViewSet):
-  queryset = models.UserHunt.objects.all()
-  serializer_class = serializers.UserHuntSerializer
+    queryset = models.UserHunt.objects.all()
+    serializer_class = serializers.UserHuntSerializer
+
+class UserCheckpointImageViewSet(viewsets.ModelViewSet):
+    queryset = models.UserCheckpointImage.objects.all()
+    serializer_class = serializers.UserCheckpointImageSerializer
