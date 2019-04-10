@@ -57,10 +57,19 @@ class UserHunt(models.Model):
     # successful_checkpoints = models.
         
 class Checkpoint(models.Model):
-    hunt_id = models.ForeignKey(Hunt, on_delete=models.CASCADE, related_name='checkpoints')
+    hunt_id = models.ForeignKey(Hunt, on_delete=models.CASCADE, related_name='hunt')
     clue = models.CharField(max_length=255)
     description = models.TextField(blank=True, null=True)
     image_url = models.TextField(blank=True, null=True)
     
     def __str__(self):
         return self.clue
+
+class UserCheckpointImage(models.Model):
+    image_name = models.CharField(max_length=255)
+    user_hunt_id = models.ForeignKey(UserHunt, on_delete=models.CASCADE, related_name='userhunts')
+    checkpoint_id = models.ForeignKey(Checkpoint, on_delete=models.CASCADE, related_name='checkpoints')
+    image_url = models.TextField(blank=True, null=True)
+    
+    def __str__(self):
+        return self.image_name
