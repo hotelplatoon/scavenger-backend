@@ -44,3 +44,18 @@ class UserImagesPageTest(TestCase):
         response = self.client.get('/api/userimages/')
         self.assertEquals(response.status_code, 200)
 
+# class LogInTest(TestCase):
+
+#     def setUp(self):
+#         self.credentials = {
+#             'email': 'test@gmail.com',
+#             'name': 'test',
+#             'password': 'secret'}
+#         models.UserProfileManager.create_user(self, **self.credentials)
+
+#     def test_login(self):
+#         self.credentials = {
+#             'email': 'test@gmail.com',
+#             'password': 'test'}
+#         response = self.client.post('/api/login/', self.credentials, follow=True)
+#         self.assertTrue(response.context['test'].is_active)
