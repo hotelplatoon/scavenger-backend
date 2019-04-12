@@ -1,8 +1,12 @@
 from django.http import HttpRequest
 from django.test import TestCase
 from django.urls import reverse
+from django.contrib.auth.models import AbstractBaseUser
+from django.contrib.auth.models import PermissionsMixin
+from django.contrib.auth.models import BaseUserManager
 
 from . import views
+from . import models
 
 class ApiPageTest(TestCase):
 
@@ -12,24 +16,12 @@ class ApiPageTest(TestCase):
 
 class SignupPageTest(TestCase):
 
-    def test_api_status_code(self):
+    def test_signup_status_code(self):
         response = self.client.get('/api/signup/')
         self.assertEquals(response.status_code, 200)
 
-# class ApiPageTest(SimpleTestCase):
+class CheckpointPageTest(TestCase):
 
-#     def test_api_status_code(self):
-#         response = self.client.get('/api/')
-#         self.assertEquals(response.status_code, 200)
-
-# class ApiPageTest(SimpleTestCase):
-
-#     def test_api_status_code(self):
-#         response = self.client.get('/api/')
-#         self.assertEquals(response.status_code, 200)
-
-# class ApiPageTest(SimpleTestCase):
-
-#     def test_api_status_code(self):
-#         response = self.client.get('/api/')
-#         self.assertEquals(response.status_code, 200)
+    def test_checkpoint_status_code(self):
+        response = self.client.get('/api/checkpoint/')
+        self.assertEquals(response.status_code, 200)

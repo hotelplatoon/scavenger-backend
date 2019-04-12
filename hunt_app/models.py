@@ -54,7 +54,6 @@ class UserHunt(models.Model):
     hunt_id = models.ForeignKey(Hunt, on_delete=models.CASCADE, related_name='hunts')
     created_at = models.DateTimeField(default=timezone.now)
     finished_at = models.DateTimeField(default=timezone.now)
-    # successful_checkpoints = models.
         
 class Checkpoint(models.Model):
     hunt_id = models.ForeignKey(Hunt, on_delete=models.CASCADE, related_name='hunt')
