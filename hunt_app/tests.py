@@ -38,3 +38,9 @@ class UserHuntPageTest(TestCase):
         response = self.client.get('/api/userhunt/')
         self.assertEquals(response.status_code, 200)
 
+class UserImagesPageTest(TestCase):
+
+    def test_userimages_status_code(self):
+        response = self.client.get('/api/userimages/')
+        self.assertEquals(response.status_code, 200)
+
