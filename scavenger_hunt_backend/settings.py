@@ -130,7 +130,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-CORS_ORIGIN_WHITELIST = ('hunt-app-backend.herokuapp.com')
+# CORS_ORIGIN_WHITELIST = ('hunt-app-backend.herokuapp.com')
+CORS_ORIGIN_WHITELIST = ('hunt-app-backend//.herokuapp.com')
+
 
 AUTH_USER_MODEL = 'hunt_app.UserProfile'
 django_heroku.settings(locals())
