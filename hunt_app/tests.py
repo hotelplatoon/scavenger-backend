@@ -32,3 +32,9 @@ class HuntPageTest(TestCase):
         response = self.client.get('/api/hunt/')
         self.assertEquals(response.status_code, 200)
 
+class UserHuntPageTest(TestCase):
+
+    def test_userhunt_status_code(self):
+        response = self.client.get('/api/userhunt/')
+        self.assertEquals(response.status_code, 200)
+
