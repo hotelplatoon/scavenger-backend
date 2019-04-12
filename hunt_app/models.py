@@ -10,7 +10,7 @@ class UserProfileManager(BaseUserManager): # helps django work with our custom u
     def create_user(self, email, name, password=None):  # creates a new user profile objects
         if not email:
             raise ValueError('Users must have an email address.')
-        email = self.normalize_email(email)  # normalizes all emaisl across the system
+        email = self.normalize_email(email)  # normalizes all emails across the system
         user = self.model(email=email, name=name)
         user.set_password(password) # set_password function encrypts password. converts users password string into a hash in database.
         user.save(using=self._db)
