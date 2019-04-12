@@ -25,3 +25,10 @@ class CheckpointPageTest(TestCase):
     def test_checkpoint_status_code(self):
         response = self.client.get('/api/checkpoint/')
         self.assertEquals(response.status_code, 200)
+
+class HuntPageTest(TestCase):
+
+    def test_hunt_status_code(self):
+        response = self.client.get('/api/hunt/')
+        self.assertEquals(response.status_code, 200)
+
