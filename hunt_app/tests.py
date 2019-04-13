@@ -81,3 +81,9 @@ class UserProfileClassGetShortNameMethodTest(TestCase):
         method = models.UserProfile.get_short_name
         self.assertTrue(inspect.isfunction(method))
 
+class UserProfileClassStrEmailMethodTest(TestCase):
+
+    def test_userprofile_class_str_email(self):
+        method = models.UserProfile.__str__
+        self.assertTrue(inspect.isfunction(method))
+
