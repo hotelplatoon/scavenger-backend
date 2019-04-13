@@ -19,7 +19,7 @@ class UserProfileViewSet(viewsets.ModelViewSet):   # handles creating, reading, 
     authentication_classes = (TokenAuthentication,)
     permission_classes = (permissions.UpdateOwnProfile,)
     filter_backends = (filters.SearchFilter,)
-    search_fields = ('name', 'email',)
+    search_fields = ('=name', '=email',)
 
 class LoginViewSet(viewsets.ViewSet): #  checks email and password and returns an auth token
 
