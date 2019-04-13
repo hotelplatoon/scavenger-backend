@@ -50,3 +50,10 @@ class HuntClassTest(TestCase):
     def test_hunt_class(self):
         hunt = models.Hunt
         self.assertTrue(inspect.isclass(hunt))
+
+class CheckpointClassTest(TestCase):
+
+    def test_checkpoint_class(self):
+        checkpoint = models.Checkpoint
+        self.assertTrue(inspect.isclass(checkpoint))
+
