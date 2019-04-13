@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
+    'coverage',
     'hunt_app',
 ]
 
@@ -131,7 +132,6 @@ USE_TZ = True
 
 # CORS_ORIGIN_WHITELIST = ('hunt-app-backend.herokuapp.com')
 CORS_ORIGIN_WHITELIST = ('hunt-app-backend//.herokuapp.com')
-
 
 AUTH_USER_MODEL = 'hunt_app.UserProfile'
 

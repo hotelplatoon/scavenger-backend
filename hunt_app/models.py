@@ -4,13 +4,15 @@ from django.utils import timezone
 from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.models import BaseUserManager
+from django.test import TestCase
+
 
 class UserProfileManager(BaseUserManager): # helps django work with our custom user model
     
     def create_user(self, email, name, password=None):  # creates a new user profile objects
         if not email:
             raise ValueError('Users must have an email address.')
-        email = self.normalize_email(email)  # normalizes all emails across the system
+        email = BaseUserManager.normalize_email(email)  # normalizes all emails across the system
         user = self.model(email=email, name=name)
         user.set_password(password) # set_password function encrypts password. converts users password string into a hash in database.
         user.save(using=self._db)
@@ -54,7 +56,6 @@ class UserHunt(models.Model):
     hunt_id = models.ForeignKey(Hunt, on_delete=models.CASCADE, related_name='hunts')
     created_at = models.DateTimeField(default=timezone.now)
     finished_at = models.DateTimeField(default=timezone.now)
-    # successful_checkpoints = models.
         
 class Checkpoint(models.Model):
     hunt_id = models.ForeignKey(Hunt, on_delete=models.CASCADE, related_name='hunt')
