@@ -67,8 +67,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ORIGIN_ALLOW_ALL = True
-CORS_ALLOW_CREDENTIALS = True
+# CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = 'scavenger_hunt_backend.urls'
 
@@ -138,11 +138,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_URL = '/static/'
 
 # CORS_ORIGIN_WHITELIST = ('hunt-app-backend.herokuapp.com')
 CORS_ORIGIN_WHITELIST = ('hunt-app-backend//.herokuapp.com')
 
 
 AUTH_USER_MODEL = 'hunt_app.UserProfile'
+
+STATIC_URL = '/static/'
 django_heroku.settings(locals())
