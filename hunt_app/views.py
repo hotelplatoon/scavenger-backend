@@ -43,3 +43,5 @@ class UserHuntViewSet(viewsets.ModelViewSet):
 class UserCheckpointImageViewSet(viewsets.ModelViewSet):
     queryset = models.UserCheckpointImage.objects.all()
     serializer_class = serializers.UserCheckpointImageSerializer
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('=user_hunt_id')
