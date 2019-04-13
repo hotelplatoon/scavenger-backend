@@ -87,3 +87,8 @@ class UserProfileClassStrEmailMethodTest(TestCase):
         method = models.UserProfile.__str__
         self.assertTrue(inspect.isfunction(method))
 
+class HuntClassCategoryStrMethodTest(TestCase):
+
+    def test_hunt_class_str_category(self):
+        method = models.Hunt.__str__
+        self.assertTrue(inspect.isfunction(method))
