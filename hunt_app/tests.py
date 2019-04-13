@@ -99,3 +99,21 @@ class CheckpointClassStrMethodTest(TestCase):
         method = models.Checkpoint.__str__
         self.assertTrue(inspect.isfunction(method))
 
+class UserCheckpointImageStrMethodTest(TestCase):
+
+    def test_checkpoint_class_str_image_name(self):
+        method = models.UserCheckpointImage.__str__
+        self.assertTrue(inspect.isfunction(method))
+
+class UserProfileManagerCreateUserMethodTest(TestCase):
+
+    def test_userprofilemanager_class_create_user(self):
+        method = models.UserProfileManager.create_user
+        self.assertTrue(inspect.isfunction(method))
+
+class UserProfileManagerCreateSuperUserMethodTest(TestCase):
+
+    def test_userprofilemanager_class_create_superuser(self):
+        method = models.UserProfileManager.create_superuser
+        self.assertTrue(inspect.isfunction(method))
+
