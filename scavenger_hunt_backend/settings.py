@@ -43,16 +43,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'corsheaders',
     'coverage',
-    'django_nose',
     'hunt_app',
-]
-
-TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
-
-NOSE_ARGS = [
-    '--with-coverage',
-    '--cover-html',
-    '--cover-package=hunt_app, scavenger_hunt_backend',
 ]
 
 MIDDLEWARE = [
@@ -141,7 +132,6 @@ USE_TZ = True
 
 # CORS_ORIGIN_WHITELIST = ('hunt-app-backend.herokuapp.com')
 CORS_ORIGIN_WHITELIST = ('hunt-app-backend//.herokuapp.com')
-
 
 AUTH_USER_MODEL = 'hunt_app.UserProfile'
 

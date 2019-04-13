@@ -1,4 +1,3 @@
-from hunt_app.models import Hunt
 from django.db import models
 from django.conf import settings
 from django.http import HttpRequest
@@ -11,7 +10,7 @@ import inspect
 
 from . import views
 from . import models
-from .models import Hunt
+from .models import Hunt, UserHunt, Checkpoint, UserCheckpointImage, AbstractBaseUser, BaseUserManager, UserProfileManager, UserProfile
 
 class ApiPageTest(TestCase):
 
@@ -131,14 +130,14 @@ class UserProfileInstanceTest(TestCase):
     def test_userprofile_class_instance(self):
         self.assertTrue(isinstance(models.UserProfile(),AbstractBaseUser))
 
-class HuntCategoryTest(TestCase):
+class HuntClassObjTest(TestCase):
 
     def create_hunt(self, category='testcategory', city='testcity', checkpoint_amount=1):
         return Hunt.objects.create(category=category, city=city, checkpoint_amount=checkpoint_amount)
 
     def test_hunt_creation(self):
-        w = self.create_hunt()
-        self.assertTrue(isinstance(w, Hunt))  
+        hunt = self.create_hunt()
+        self.assertTrue(isinstance(hunt, Hunt))  
 
     def test_hunt_category(self):
         hunt = self.create_hunt()
@@ -154,3 +153,26 @@ class HuntCategoryTest(TestCase):
         hunt = self.create_hunt()
         self.assertTrue(isinstance(hunt, Hunt))
         self.assertEqual(1, hunt.checkpoint_amount)
+
+class CheckpointClassCreationTest(TestCase):
+
+    def create_checkpoint(self, hunt_id=1, clue='this is a test clue', description='test description', image_url='A3h5e45h'):
+        hunt_pk = Hunt.objects.create(pk=9, category='testcategory', city='testcity', checkpoint_amount=1)
+        checkpoint_obj = Checkpoint.objects.create(hunt_id=hunt_pk, clue=clue, description=description, image_url=image_url)
+        return checkpoint_obj
+
+    def test_checkpoint_creation(self):
+        checkpoint_obj = self.create_checkpoint()
+        self.assertTrue(isinstance(checkpoint_obj, Checkpoint))  
+
+    def test_checkpoint_clue(self):
+        checkpoint = self.create_checkpoint()
+        self.assertEqual('this is a test clue', checkpoint.clue)
+
+    def test_checkpoint_description(self):
+        checkpoint = self.create_checkpoint()
+        self.assertEqual('test description', checkpoint.description)
+
+    def test_checkpoint_image_url(self):
+        checkpoint = self.create_checkpoint()
+        self.assertEqual('A3h5e45h', checkpoint.image_url)

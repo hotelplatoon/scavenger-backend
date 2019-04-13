@@ -4,6 +4,8 @@ from django.utils import timezone
 from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.models import BaseUserManager
+from django.test import TestCase
+
 
 class UserProfileManager(BaseUserManager): # helps django work with our custom user model
     
