@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.models import BaseUserManager
+import inspect
 
 from . import views
 from . import models
@@ -44,18 +45,8 @@ class UserImagesPageTest(TestCase):
         response = self.client.get('/api/userimages/')
         self.assertEquals(response.status_code, 200)
 
-# class LogInTest(TestCase):
+class HuntClassTest(TestCase):
 
-#     def setUp(self):
-#         self.credentials = {
-#             'email': 'test@gmail.com',
-#             'name': 'test',
-#             'password': 'secret'}
-#         models.UserProfileManager.create_user(self, **self.credentials)
-
-#     def test_login(self):
-#         self.credentials = {
-#             'email': 'test@gmail.com',
-#             'password': 'test'}
-#         response = self.client.post('/api/login/', self.credentials, follow=True)
-#         self.assertTrue(response.context['test'].is_active)
+    def test_hunt_class(self):
+        hunt = models.Hunt
+        self.assertTrue(inspect.isclass(hunt))
