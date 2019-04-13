@@ -75,3 +75,9 @@ class UserProfileClassGetFullNameMethodTest(TestCase):
         method = models.UserProfile.get_full_name
         self.assertTrue(inspect.isfunction(method))
 
+class UserProfileClassGetShortNameMethodTest(TestCase):
+
+    def test_userprofile_class_shortname(self):
+        method = models.UserProfile.get_short_name
+        self.assertTrue(inspect.isfunction(method))
+
