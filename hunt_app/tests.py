@@ -1,3 +1,6 @@
+from hunt_app.models import Hunt
+from django.db import models
+from django.conf import settings
 from django.http import HttpRequest
 from django.test import TestCase
 from django.urls import reverse
@@ -8,6 +11,7 @@ import inspect
 
 from . import views
 from . import models
+from .models import Hunt
 
 class ApiPageTest(TestCase):
 
@@ -126,3 +130,22 @@ class UserProfileInstanceTest(TestCase):
 
     def test_userprofile_class_instance(self):
         self.assertTrue(isinstance(models.UserProfile(),AbstractBaseUser))
+
+class HuntCategoryTest(TestCase):
+
+    # def create_huntcategory(self, category='testcategory', city='testcity', checkpoint_amount=1):
+    # huntobject = Hunt.objects.create(category=category, city=city checkpoint_amount=checkpoint_amount)
+    #     return huntobject
+
+    def create_hunt(self, category='testcategory', city='testcity', checkpoint_amount=1):
+        return Hunt.objects.create(category=category, city=city, checkpoint_amount=checkpoint_amount)
+
+    def test_hunt_creation(self):
+        w = self.create_hunt()
+        self.assertTrue(isinstance(w, Hunt))  
+
+    def test_hunt_category(self):
+        w = self.create_hunt()
+        self.assertTrue(isinstance(w, Hunt))
+        self.assertEqual('testcategory', w.category)   
+
