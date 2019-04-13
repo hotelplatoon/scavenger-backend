@@ -69,3 +69,9 @@ class UserCheckpointImageTest(TestCase):
         usercheckpointimage = models.UserCheckpointImage
         self.assertTrue(inspect.isclass(usercheckpointimage))
 
+class UserProfileClassGetFullNameMethodTest(TestCase):
+
+    def test_userprofile_class_fullname(self):
+        method = models.UserProfile.get_full_name
+        self.assertTrue(inspect.isfunction(method))
+
