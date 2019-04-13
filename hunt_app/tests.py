@@ -122,3 +122,7 @@ class UserProfileManagerInstanceTest(TestCase):
     def test_userprofilemanager_class_instance(self):
         self.assertTrue(isinstance(models.UserProfileManager(),BaseUserManager))
 
+class UserProfileInstanceTest(TestCase):
+
+    def test_userprofile_class_instance(self):
+        self.assertTrue(isinstance(models.UserProfile(),AbstractBaseUser))
