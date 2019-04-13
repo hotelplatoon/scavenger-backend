@@ -117,3 +117,8 @@ class UserProfileManagerCreateSuperUserMethodTest(TestCase):
         method = models.UserProfileManager.create_superuser
         self.assertTrue(inspect.isfunction(method))
 
+class UserProfileManagerInstanceTest(TestCase):
+
+    def test_userprofilemanager_class_instance(self):
+        self.assertTrue(isinstance(models.UserProfileManager(),BaseUserManager))
+
