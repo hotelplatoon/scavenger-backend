@@ -133,10 +133,6 @@ class UserProfileInstanceTest(TestCase):
 
 class HuntCategoryTest(TestCase):
 
-    # def create_huntcategory(self, category='testcategory', city='testcity', checkpoint_amount=1):
-    # huntobject = Hunt.objects.create(category=category, city=city checkpoint_amount=checkpoint_amount)
-    #     return huntobject
-
     def create_hunt(self, category='testcategory', city='testcity', checkpoint_amount=1):
         return Hunt.objects.create(category=category, city=city, checkpoint_amount=checkpoint_amount)
 
@@ -145,7 +141,16 @@ class HuntCategoryTest(TestCase):
         self.assertTrue(isinstance(w, Hunt))  
 
     def test_hunt_category(self):
-        w = self.create_hunt()
-        self.assertTrue(isinstance(w, Hunt))
-        self.assertEqual('testcategory', w.category)   
+        hunt = self.create_hunt()
+        self.assertTrue(isinstance(hunt, Hunt))
+        self.assertEqual('testcategory', hunt.category)
+    
+    def test_hunt_city(self):
+        hunt = self.create_hunt()
+        self.assertTrue(isinstance(hunt, Hunt))
+        self.assertEqual('testcity', hunt.city)
 
+    def test_hunt_checkpoint_amount(self):
+        hunt = self.create_hunt()
+        self.assertTrue(isinstance(hunt, Hunt))
+        self.assertEqual(1, hunt.checkpoint_amount)
