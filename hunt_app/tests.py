@@ -63,3 +63,9 @@ class UserHuntClassTest(TestCase):
         userhunt = models.UserHunt
         self.assertTrue(inspect.isclass(userhunt))
 
+class UserCheckpointImageTest(TestCase):
+
+    def test_usercheckpointimage_class(self):
+        usercheckpointimage = models.UserCheckpointImage
+        self.assertTrue(inspect.isclass(usercheckpointimage))
+
