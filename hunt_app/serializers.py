@@ -35,4 +35,4 @@ class UserHuntSerializer(serializers.ModelSerializer):
 class UserCheckpointImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.UserCheckpointImage
-        fields = ['image_name','user_hunt_id','checkpoint_id','pk']
+        fields = ['image_name','user_hunt_id','checkpoint_id','user_id','pk']

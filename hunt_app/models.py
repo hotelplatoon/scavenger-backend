@@ -70,6 +70,7 @@ class UserCheckpointImage(models.Model):
     image_name = models.CharField(max_length=255)
     user_hunt_id = models.ForeignKey(UserHunt, on_delete=models.CASCADE, related_name='userhunts')
     checkpoint_id = models.ForeignKey(Checkpoint, on_delete=models.CASCADE, related_name='checkpoints')
+    user_id = models.IntegerField(blank=True, null=True)
     
     def __str__(self):
         return self.image_name
