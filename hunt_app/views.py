@@ -12,7 +12,7 @@ from . import serializers
 from . import models
 from . import permissions
 
-class UserProfileViewSet(viewsets.ModelViewSet):   # handles creating, reading, updating profiles
+class UserProfileViewSet(viewsets.ModelViewSet):
     
     serializer_class = serializers.UserProfileSerializer
     queryset = models.UserProfile.objects.all()
@@ -21,11 +21,11 @@ class UserProfileViewSet(viewsets.ModelViewSet):   # handles creating, reading, 
     filter_backends = (filters.SearchFilter,)
     search_fields = ('=name', '=email',)
 
-class LoginViewSet(viewsets.ViewSet): #  checks email and password and returns an auth token
+class LoginViewSet(viewsets.ViewSet):
 
     serializer_class = AuthTokenSerializer
 
-    def create(self, request):  # use the obtain auth token api view to validate and create a token
+    def create(self, request):
         return ObtainAuthToken().post(request)
         
 class HuntViewSet(viewsets.ModelViewSet):

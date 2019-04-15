@@ -7,14 +7,14 @@ from django.contrib.auth.models import BaseUserManager
 from django.test import TestCase
 
 
-class UserProfileManager(BaseUserManager): # helps django work with our custom user model
+class UserProfileManager(BaseUserManager):
     
-    def create_user(self, email, name, password=None):  # creates a new user profile objects
+    def create_user(self, email, name, password=None):
         if not email:
             raise ValueError('Users must have an email address.')
-        email = BaseUserManager.normalize_email(email)  # normalizes all emails across the system
+        email = BaseUserManager.normalize_email(email)
         user = self.model(email=email, name=name)
-        user.set_password(password) # set_password function encrypts password. converts users password string into a hash in database.
+        user.set_password(password)
         user.save(using=self._db)
         return user
 
@@ -25,7 +25,7 @@ class UserProfileManager(BaseUserManager): # helps django work with our custom u
         user.save(using=self._db)
         return user
         
-class UserProfile(AbstractBaseUser, PermissionsMixin):  # represents a user profile in system
+class UserProfile(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(max_length=255, unique=True)
     name = models.CharField(max_length=255)
     is_active = models.BooleanField(default=True)
